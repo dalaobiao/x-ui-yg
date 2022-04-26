@@ -395,9 +395,9 @@ show_status() {
         0)
             echo -e "x-ui面板状态: ${green}已运行${plain}"
             echo -e "x-ui面板用户名、密码、端口:"
+            show_enable_status
             acp=$(/usr/local/x-ui/x-ui setting -show | awk 'NR!=1 { print }')
             green "$acp"
-            show_enable_status
             ;;
         1)
             echo -e "x-ui面板状态: ${yellow}未运行${plain}"
