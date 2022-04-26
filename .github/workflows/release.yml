@@ -24,7 +24,7 @@ jobs:
   linuxamd64build:
     name: build x-ui amd64 version
     needs: release
-    runs-on: ubuntu-l18.04
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - name: Set up Go
