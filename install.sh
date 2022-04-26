@@ -223,6 +223,7 @@ green "x-ui守护进程设置完毕" && sleep 1
 green "设置x-ui每月1日自动重启一次，防止x-ui对新证书不识别问题"
 sed -i '/x-ui restart/d' /etc/crontab >/dev/null 2>&1
 echo "0 1 1 * * x-ui restart >/dev/null 2>&1" >> /etc/crontab
+sleep 1
 echo -e ""
 blue "以下设置内容建议自定义，以防止账号密码及端口泄露"
 echo -e ""
@@ -279,7 +280,7 @@ fi
     echo -e ""
     echo -e "x-ui 管理脚本使用方法: "
     echo -e "----------------------------------------------"
-    echo -e "x-ui              - 显示管理菜单 (集成一键AMCE申请证书、端口显示)"
+    echo -e "x-ui              - 显示管理菜单 (一键证书申请，简单版BBR+FQ加速，账号、密码、端口显示)"
     echo -e "x-ui start        - 启动 x-ui 面板"
     echo -e "x-ui stop         - 停止 x-ui 面板"
     echo -e "x-ui restart      - 重启 x-ui 面板"
