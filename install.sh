@@ -24,7 +24,7 @@ white "甬哥Github项目  ：github.com/kkkyg"
 white "甬哥blogger博客 ：kkkyg.blogspot.com"
 white "甬哥YouTube频道 ：www.youtube.com/c/甬哥侃侃侃kkkyg"
 yellow "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
-yellow "本项目将延续原x-ui更新：https://github.com/vaxilu/x-ui"
+yellow "感谢vaxilu与FranzKafkaYu对x-ui上游的更新维护"
 
 sleep 2
 cur_dir=$(pwd)
