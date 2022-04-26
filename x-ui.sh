@@ -393,7 +393,6 @@ show_status() {
     check_status
     case $? in
         0)
-            ports=$(/usr/local/x-ui/x-ui 2>&1 | grep tcp | awk '{print $5}' | sed "s/://g")
             echo -e "x-ui面板状态: ${green}已运行${plain}"
             echo -e "x-ui面板用户名、密码、端口:"
             /usr/local/x-ui/x-ui setting -show true
@@ -439,7 +438,7 @@ show_xray_status() {
 show_usage() {
     echo "x-ui 管理脚本使用方法: "
     echo "------------------------------------------"
-    echo "x-ui              - 显示管理菜单 (集成一键ACE申请证书)"
+    echo "x-ui              - 显示管理菜单 (一键证书申请，简单版BBR+FQ加速，账号、密码、端口显示)"
     echo "x-ui start        - 启动 x-ui 面板"
     echo "x-ui stop         - 停止 x-ui 面板"
     echo "x-ui restart      - 重启 x-ui 面板"
