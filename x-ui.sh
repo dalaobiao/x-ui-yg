@@ -395,8 +395,6 @@ show_status() {
         0)
             echo -e "x-ui面板状态: ${green}已运行${plain}"
             show_enable_status
-            acp=$(/usr/local/x-ui/x-ui setting -show)
-            green "$acp"
             ;;
         1)
             echo -e "x-ui面板状态: ${yellow}未运行${plain}"
@@ -480,6 +478,8 @@ show_menu() {
   ${green}16.${plain} 一键BBR+FQ加速
  "
     show_status
+    acp=$(/usr/local/x-ui/x-ui setting -show)
+    green "$acp"
     echo && read -p "请输入选择 [0-16]: " num
 
     case "${num}" in
