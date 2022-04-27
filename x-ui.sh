@@ -478,6 +478,7 @@ show_menu() {
   ${green}16.${plain} 一键BBR+FQ加速
  "
     show_status
+    echo "------------------------------------------"
     acp=$(/usr/local/x-ui/x-ui setting -show)
     green "$acp"
     echo && read -p "请输入选择 [0-16]: " num
