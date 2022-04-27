@@ -23,9 +23,8 @@ green "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 white "甬哥Github项目  ：github.com/kkkyg"
 white "甬哥blogger博客 ：kkkyg.blogspot.com"
 white "甬哥YouTube频道 ：www.youtube.com/c/甬哥侃侃侃kkkyg"
+yellow "感谢x-ui代码贡献者们在上游的更新维护"
 yellow "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
-yellow "感谢vaxilu与FranzKafkaYu对x-ui上游的更新维护"
-
 sleep 2
 cur_dir=$(pwd)
 
