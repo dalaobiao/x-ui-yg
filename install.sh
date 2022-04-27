@@ -65,8 +65,15 @@ else
   arch="amd64"
   echo -e "${red}检测架构失败，使用默认架构: ${arch}${plain}"
 fi
-
-echo -e "${yellow}VPS虚拟化架构: ${arch}${plain}"
+sys(){
+[ -f /etc/os-release ] && grep -i pretty_name /etc/os-release | cut -d \" -f2 && return
+[ -f /etc/lsb-release ] && grep -i description /etc/lsb-release | cut -d \" -f2 && return
+[ -f /etc/redhat-release ] && awk '{print $0}' /etc/redhat-release && return;}
+op=`sys`
+version=`uname -r | awk -F "-" '{print $1}'`
+vi=`systemd-detect-virt`
+white " VPS操作系统: $(blue "$op") \c" && white " 内核版本: $(blue "$version") \c" && white " CPU架构 : $(blue "$arch") \c" && white " 虚拟化类型: $(blue "$vi") \c"
+sleep 2
 
 if [ $(getconf WORD_BIT) != '32' ] && [ $(getconf LONG_BIT) != '64' ] ; then
     echo "本软件不支持 32 位系统(x86)，请使用 64 位系统(x86_64)，如果检测有误，请联系作者"
