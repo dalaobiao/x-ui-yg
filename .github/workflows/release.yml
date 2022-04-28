@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
@@ -24,7 +24,7 @@ jobs:
   linuxamd64build:
     name: build x-ui amd64 version
     needs: release
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up Go
@@ -33,7 +33,7 @@ jobs:
           go-version: 1.18
       - name: build linux amd64 version
         run: |
-          CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -o xui-release -v main.go
+          CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -ldflags='-extldflags=-static' -tags sqlite_omit_load_extension -o xui-release -v main.go
           mkdir x-ui
           cp xui-release x-ui/xui-release
           cp x-ui.service x-ui/x-ui.service
@@ -64,7 +64,7 @@ jobs:
   linuxarm64build:
     name: build x-ui arm64 version
     needs: release
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up Go
@@ -75,7 +75,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt install gcc-aarch64-linux-gnu
-          CGO_ENABLED=1 GOOS=linux GOARCH=arm64 CC=aarch64-linux-gnu-gcc go build -o xui-release -v main.go
+          CGO_ENABLED=1 GOOS=linux GOARCH=arm64 CC=aarch64-linux-gnu-gcc go build -ldflags='-extldflags=-static' -tags sqlite_omit_load_extension -o xui-release -v main.go
           mkdir x-ui
           cp xui-release x-ui/xui-release
           cp x-ui.service x-ui/x-ui.service
@@ -106,7 +106,7 @@ jobs:
   linuxs390xbuild:
     name: build x-ui s390x version
     needs: release
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up Go
@@ -117,7 +117,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt install gcc-s390x-linux-gnu -y
-          CGO_ENABLED=1 GOOS=linux GOARCH=s390x CC=s390x-linux-gnu-gcc go build -o xui-release -v main.go
+          CGO_ENABLED=1 GOOS=linux GOARCH=s390x CC=s390x-linux-gnu-gcc go build -ldflags='-extldflags=-static' -tags sqlite_omit_load_extension -o xui-release -v main.go
           mkdir x-ui
           cp xui-release x-ui/xui-release
           cp x-ui.service x-ui/x-ui.service
