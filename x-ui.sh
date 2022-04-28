@@ -479,7 +479,7 @@ show_menu() {
  "
     show_status
     echo "------------------------------------------"
-    acp=$(/usr/local/x-ui/x-ui setting -show)
+    acp=$(/usr/local/x-ui/x-ui setting -show 2>/dev/null)
     green "$acp"
     echo && read -p "请输入选择 [0-16]: " num
 
