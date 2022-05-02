@@ -160,7 +160,7 @@ iptables -t nat -F
 iptables -t mangle -F 
 iptables -F
 iptables -X
-netfilter-persistent save
+netfilter-persistent save >/dev/null 2>&1
 if [[ -z $(grep 'DiG 9' /etc/hosts) ]]; then
 v4=$(curl -s4m3 https://ip.gs -k)
 if [ -z $v4 ]; then
@@ -227,7 +227,7 @@ sed -i '/goxui.sh/d' /etc/crontab >/dev/null 2>&1
 echo "*/1 * * * * root bash /root/goxui.sh >/dev/null 2>&1" >> /etc/crontab
 green "x-ui守护进程设置完毕" && sleep 1
 green "设置x-ui每月1日自动重启一次，防止x-ui对新证书不识别问题"
-sed -i '/x-ui restart/d' /etc/crontab >/dev/null 2>&1
+sed -i '/x-ui restart/d' /etc/crontab
 echo "0 1 1 * * x-ui restart >/dev/null 2>&1" >> /etc/crontab
 sleep 1
 echo -e ""
