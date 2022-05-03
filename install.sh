@@ -153,13 +153,13 @@ systemctl stop firewalld.service >/dev/null 2>&1
 systemctl disable firewalld.service >/dev/null 2>&1
 setenforce 0 >/dev/null 2>&1
 ufw disable >/dev/null 2>&1
-iptables -P INPUT ACCEPT
-iptables -P FORWARD ACCEPT
-iptables -P OUTPUT ACCEPT
-iptables -t nat -F
-iptables -t mangle -F 
-iptables -F
-iptables -X
+iptables -P INPUT ACCEPT >/dev/null 2>&1
+iptables -P FORWARD ACCEPT >/dev/null 2>&1
+iptables -P OUTPUT ACCEPT >/dev/null 2>&1
+iptables -t nat -F >/dev/null 2>&1
+iptables -t mangle -F >/dev/null 2>&1
+iptables -F >/dev/null 2>&1
+iptables -X >/dev/null 2>&1
 netfilter-persistent save >/dev/null 2>&1
 if [[ -z $(grep 'DiG 9' /etc/hosts) ]]; then
 v4=$(curl -s4m3 https://ip.gs -k)
