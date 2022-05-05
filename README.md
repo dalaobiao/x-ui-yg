@@ -55,3 +55,6 @@ wget -N https://raw.githubusercontents.com/kkkyg/x-ui-yg/main/install.sh && bash
 
 [甬哥博客主页](https://kkkyg.blogspot.com/)
 
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/kkkyg/x-ui-yg.svg)](https://starchart.cc/kkkyg/x-ui-yg)
