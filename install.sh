@@ -226,7 +226,7 @@ chmod +x /root/goxui.sh
 sed -i '/goxui.sh/d' /etc/crontab >/dev/null 2>&1
 echo "*/1 * * * * root bash /root/goxui.sh >/dev/null 2>&1" >> /etc/crontab
 green "x-ui守护进程设置完毕" && sleep 1
-green "设置x-ui每月1日自动重启一次，防止x-ui对新证书不识别问题"
+green "设置x-ui每月1日自动重启一次，防止x-ui对自动续期后的证书不识别问题"
 sed -i '/x-ui restart/d' /etc/crontab
 echo "0 1 1 * * x-ui restart >/dev/null 2>&1" >> /etc/crontab
 sleep 1
