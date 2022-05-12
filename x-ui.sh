@@ -162,8 +162,7 @@ update() {
     echo -e "${green}更新完成，已自动重启面板${plain}"
     acp=$(/usr/local/x-ui/x-ui setting -show 2>/dev/null)
     green "$acp"
-        exit 0
-    fi
+    exit 0
 }
 
 uninstall() {
