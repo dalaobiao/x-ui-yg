@@ -123,9 +123,45 @@ update() {
         fi
         return 0
     fi
-    bash <(curl -Ls https://raw.githubusercontent.com/kkkyg/x-ui-yg/master/install.sh)
-    if [[ $? == 0 ]]; then
-        echo -e "${green}更新完成，已自动重启面板${plain}"
+    arch=$(arch)
+    systemctl stop x-ui
+    cd /usr/local/
+    if  [ $# == 0 ] ;then
+        wget -N --no-check-certificate -O /usr/local/x-ui-linux-${arch}.tar.gz https://raw.githubusercontents.com/kkkyg/x-ui-yg/main/x-ui-linux-${arch}.tar.gz
+        if [[ $? -ne 0 ]]; then
+            echo -e "${red}下载 x-ui 失败，请确保你的服务器能够下载 Github 的文件${plain}"
+            rm -rf install.sh
+            exit 1
+        fi
+    else
+        last_version=$1
+        url="https://raw.githubusercontents.com/kkkyg/x-ui-yg/main/x-ui-linux-${arch}.tar.gz"
+        echo -e "开始安装 x-ui v$1"
+        wget -N --no-check-certificate -O /usr/local/x-ui-linux-${arch}.tar.gz ${url}
+        if [[ $? -ne 0 ]]; then
+            echo -e "${red}下载 x-ui v$1 失败，请确保此版本存在${plain}"
+            rm -rf install.sh
+            exit 1
+        fi
+    fi
+    if [[ -e /usr/local/x-ui/ ]]; then
+        rm /usr/local/x-ui/ -rf
+    fi
+    tar zxvf x-ui-linux-${arch}.tar.gz
+    rm x-ui-linux-${arch}.tar.gz -f
+    cd x-ui
+    chmod +x x-ui bin/xray-linux-${arch}
+    cp -f x-ui.service /etc/systemd/system/
+    wget --no-check-certificate -O /usr/bin/x-ui https://raw.githubusercontents.com/kkkyg/x-ui-yg/main/x-ui.sh
+    chmod +x /usr/bin/x-ui
+    chmod +x /usr/local/x-ui/x-ui.sh
+    systemctl daemon-reload
+    systemctl enable x-ui
+    systemctl start x-ui
+    x-ui restart
+    echo -e "${green}更新完成，已自动重启面板${plain}"
+    acp=$(/usr/local/x-ui/x-ui setting -show 2>/dev/null)
+    green "$acp"
         exit 0
     fi
 }
