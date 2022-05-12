@@ -113,7 +113,7 @@ echo
 acp=$(/usr/local/x-ui/x-ui setting -show 2>/dev/null)
 green "$acp"
 echo
-readp "是否直接覆盖重装x-ui（Y/y）？(5秒后默认为N，不重装):" ins
+readp "是否直接覆盖重装x-ui（Y/y键）？(不重装，非Y/y键，退出脚本):" ins
 if [[ $ins = [Yy] ]]; then
 systemctl stop x-ui
 systemctl disable x-ui
@@ -125,6 +125,8 @@ rm /usr/local/x-ui/ -rf
 rm -rf goxui.sh acme.sh
 sed -i '/goxui.sh/d' /etc/crontab
 sed -i '/x-ui restart/d' /etc/crontab
+else
+exit 1
 fi
 fi
 install_base() {
