@@ -106,7 +106,27 @@ elif [[ x"${release}" == x"amazon_linux" ]]; then
         echo -e "${red}请使用 Amazon Linux 2 或更高版本的系统！${plain}\n" && exit 1
     fi
 fi
-
+ports=$(/usr/local/x-ui/x-ui 2>&1 | grep tcp | awk '{print $5}' | sed "s/://g")
+if [[ -n $ports ]]; then
+green "经检测，x-ui已安装"
+echo
+acp=$(/usr/local/x-ui/x-ui setting -show 2>/dev/null)
+green "$acp"
+echo
+readp "是否直接覆盖重装x-ui（Y/y）？(5秒后默认为N，不重装):" ins
+if [[ $ins = [Yy] ]]; then
+systemctl stop x-ui
+systemctl disable x-ui
+rm /etc/systemd/system/x-ui.service -f
+systemctl daemon-reload
+systemctl reset-failed
+rm /etc/x-ui/ -rf
+rm /usr/local/x-ui/ -rf
+rm -rf goxui.sh acme.sh
+sed -i '/goxui.sh/d' /etc/crontab
+sed -i '/x-ui restart/d' /etc/crontab
+fi
+fi
 install_base() {
 if [[ x"${release}" == x"centos" ]]; then
 if [[ ${os_version} =~ 8 ]]; then
@@ -223,7 +243,7 @@ x-ui restart
 fi
 EOF
 chmod +x /root/goxui.sh
-sed -i '/goxui.sh/d' /etc/crontab >/dev/null 2>&1
+sed -i '/goxui.sh/d' /etc/crontab
 echo "*/1 * * * * root bash /root/goxui.sh >/dev/null 2>&1" >> /etc/crontab
 green "x-ui守护进程设置完毕" && sleep 1
 green "设置x-ui每月1日自动重启一次，防止x-ui对自动续期后的证书不识别问题"
