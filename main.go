@@ -107,12 +107,12 @@ func showSetting(show bool) {
 		username := userModel.Username
 		userpasswd := userModel.Password
 		if (username == "") || (userpasswd == "") {
-			fmt.Println("用户名密码为空，安装错误，请重新安装")
+			fmt.Println("current username or password is empty")
 		}
-		fmt.Println("当前面板设置如下:")
-		fmt.Println("登录用户名:", username)
-		fmt.Println("登录密码:", userpasswd)
-		fmt.Println("登录端口:", port)
+		fmt.Println("current pannel settings as follows:")
+		fmt.Println("username:", username)
+		fmt.Println("userpasswd:", userpasswd)
+		fmt.Println("port:", port)
 	}
 }
 
