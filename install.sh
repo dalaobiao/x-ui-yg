@@ -280,8 +280,10 @@ x-ui restart
 xuilogin(){
 v4=$(curl -s4m3 https://ip.gs -k)
 v6=$(curl -s6m3 https://ip.gs -k)
-if [ -z $v4 ]; then
+if [[ -z $v4 ]]; then
 int="${green}请在浏览器地址栏复制${plain}  ${bblue}[$v6]:$ports${plain}  ${green}进入x-ui登录界面\n当前x-ui登录用户名：${plain}${bblue}${username}${plain}${green} \n当前x-ui登录密码：${plain}${bblue}${password}${plain}"
+elif [[ -n $v4 && -n $v6 ]]; then
+int="${green}请在浏览器地址栏复制${plain}  ${bblue}$v4:$ports${plain}  ${yellow}或者${plain}  ${bblue}[$v6]:$ports${plain}  ${green}进入x-ui登录界面\n当前x-ui登录用户名：${plain}${bblue}${username}${plain}${green} \n当前x-ui登录密码：${plain}${bblue}${password}${plain}"
 else
 int="${green}请在浏览器地址栏复制${plain}  ${bblue}$v4:$ports${plain}  ${green}进入x-ui登录界面\n当前x-ui登录用户名：${plain}${bblue}${username}${plain}${green} \n当前x-ui登录密码：${plain}${bblue}${password}${plain}"
 fi
