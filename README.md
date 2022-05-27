@@ -85,10 +85,10 @@ Tg机器人ChatId
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## 相关更新说明请查看[甬哥博客](https://kkkyg.blogspot.com/2022/02/x-uiacmex-uiipv4ipv6v4v6vpsvaxilux-ui.html)
+## 相关更新说明请查看[甬哥博客](https://ygkkk.blogspot.com/2022/02/githubx-uitgacmex-uiipv4ipv6v4v6vpsvaxi.html)
 ![未命名的设计](https://user-images.githubusercontent.com/90416692/163515222-b8c9cb75-7922-40db-87e5-9e15dcbb6892.png)
 ![甬哥侃侃侃 yyykg](https://user-images.githubusercontent.com/90416692/163515234-b5e40825-bea1-44db-bba4-11223531442c.png)
-## 小白独享说明图[全网首发：x-ui面版登录设置解析图，代理节点参数解析图，纯IPV4、纯IPV6登录X-UI面板的多种情况，以及cloudflare小黄云及端口的来龙去脉](https://kkkyg.blogspot.com/2022/03/x-uiipv4ipv6cloudflare.html)
+## 小白独享说明图[全网首发：x-ui面版登录设置解析图，代理节点参数解析图，纯IPV4、纯IPV6登录X-UI面板的多种情况，以及cloudflare小黄云及端口的来龙去脉](https://ygkkk.blogspot.com/2022/03/x-uiipv4ipv6x-uicloudflare.html)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
